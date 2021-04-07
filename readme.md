@@ -7,10 +7,11 @@ Here are the links:
 
 - [REST API](https://github.com/Gugusta/DB-Evaluation)
 
-## 📝 
-ID: 12170411
-Name: Gustavo Serão
-Professor: Joseffe de Oliveira
+## 📝 Class Data
+
+- ID: 12170411
+- Name: Gustavo Serão
+- Professor: Joseffe de Oliveira
 
 
 ## 📝 License
