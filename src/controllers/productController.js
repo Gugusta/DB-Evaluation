@@ -1,25 +1,25 @@
 // Define a utilização do model cliente e a dependência http-status
-const Cliente = require('../models/cliente');
+const Product = require('../models/product');
 const status = require('http-status');
 
 // Cria o método Insert, obtendo os dados da request
 exports.Insert = (req, res, next) => {
-    const nome = req.body.nome;
-    const salario = req.body.salario;
-    const dataNascimento = req.body.dataNascimento;
-    const ativo = req.body.ativo;
+    const name = req.body.name;
+    const description = req.body.description;
+    const price = req.body.price;
+    const stockQuantity = req.body.stockQuantity;
 
     // Popula cada um dos campos do model com os campos recebido na request
-    Cliente.create({
-        nome: nome,
-        salario: salario,
-        dataNascimento: dataNascimento,
-        ativo: ativo,
+    Product.create({
+        name: name,
+        description: description,
+        price: price,
+        stockQuantity: stockQuantity,
     })
         //then = registra o que queremos que aconteca quando a Promise for resolvida
-        .then(cliente => {
-            if (cliente) {
-                res.status(status.OK).send(cliente);
+        .then(product => {
+            if (product) {
+                res.status(status.OK).send(product);
             } else {
                 res.status(status.NOT_FOUND).send();
             }
@@ -29,7 +29,7 @@ exports.Insert = (req, res, next) => {
 };
 
 exports.SelectAll = (req, res, next) => {
-    Cliente.findAll()
+    Product.findAll()
         .then(cliente => {
             if (cliente) {
                 res.status(status.OK).send(cliente);
@@ -41,7 +41,7 @@ exports.SelectAll = (req, res, next) => {
 exports.SelectDetail = (req, res, next) => {
     const id = req.params.id;
 
-    Cliente.findByPk(id)
+    Product.findByPk(id)
         .then(cliente => {
             if (cliente) {
                 res.status(status.OK).send(cliente);
@@ -54,19 +54,19 @@ exports.SelectDetail = (req, res, next) => {
 
 exports.Update = (req, res, next) => {
     const id = req.params.id;
-    const nome = req.body.nome;
-    const salario = req.body.salario;
-    const dataNascimento = req.body.dataNascimento;
-    const ativo = req.body.ativo;
+    const name = req.body.name;
+    const description = req.body.description;
+    const price = req.body.price;
+    const stockQuantity = req.body.stockQuantity;
 
-    Cliente.findByPk(id)
+    Product.findByPk(id)
         .then(cliente => {
             if (cliente) {
                 cliente.update({
-                    nome: nome,
-                    salario: salario,
-                    dataNascimento: dataNascimento,
-                    ativo: ativo
+                    name: name,
+                    description: description,
+                    price: price,
+                    stockQuantity: stockQuantity,
                 },
                     {
                         where: { id: id }
@@ -86,9 +86,9 @@ exports.Delete = (req, res, next) => {
     const id = req.params.id;
 
     Cliente.findByPk(id)
-        .then(cliente => {
-            if (cliente) {
-                cliente.destroy({
+        .then(product => {
+            if (product) {
+                product.destroy({
                     where: { id: id }
                 })
                     .then(() => {

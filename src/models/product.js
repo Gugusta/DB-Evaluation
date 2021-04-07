@@ -5,35 +5,34 @@ const Sequelize = require('sequelize');
 const sequelize = require('../database/database.js');
 
 // Cria tabela no BD e seus campos
-const Cliente = sequelize.define("cliente", {
+const Cliente = sequelize.define("Product", {
     id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
     },
-    nome: {
+    name: {
         allowNull: false,
         type: Sequelize.STRING(100),
         validate: {
             len: [3, 100]
         }
     },
-    salario: {
+    description: {
         allowNull: false,
         type: Sequelize.DOUBLE(),
         validate: {
             len: [1, 999999]
         }
     },
-    dataNascimento: {
+    price: {
         allowNull: false,
-        type: Sequelize.DATE()
+        type: Sequelize.INTEGER(),
     },
-    ativo: {
+    stockQuantity: {
         allowNull: false,
-        type: Sequelize.BOOLEAN(),
-        defaultValue: true
+        type: Sequelize.INTEGER(),
     }
 });
 

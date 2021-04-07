@@ -1,11 +1,11 @@
 const express = require('express');
-const ClienteController = require('../controllers/clienteController.js');
+const productController = require('../controllers/productController');
 const router = express.Router();
 
-router.post('/cliente', ClienteController.Insert);
-router.get('/cliente', ClienteController.SelectAll);
-router.get('/cliente/:id', ClienteController.SelectDetail);
-router.put('/cliente/:id', ClienteController.Update);
-router.delete('/cliente/:id', ClienteController.Delete);
+router.post('/product', productController.Insert);
+router.get('/product', productController.SelectAll);
+router.get('/product/:id', productController.SelectDetail);
+router.put('/product/:id', productController.Update);
+router.delete('/product/:id', productController.Delete);
 
 module.exports = router;
